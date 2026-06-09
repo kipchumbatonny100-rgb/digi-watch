@@ -1,0 +1,245 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="SafeGradleScanCache">
+    <option name="cacheEntries">
+      <map>
+        <entry key="$PROJECT_DIR$/.gitignore">
+          <value>
+            <CacheEntry>
+              <option name="hash" value="1780399084585" />
+              <option name="violations">
+                <list>
+                  <CachedViolation>
+                    <option name="content" value="(missing entry)" />
+                    <option name="line" value="30" />
+                    <option name="message" value="'*.jks' is not excluded in .gitignore — if this file is committed, credentials or signing keys could be leaked to the repository." />
+                    <option name="riskLevel" value="HIGH" />
+                  </CachedViolation>
+                  <CachedViolation>
+                    <option name="content" value="(missing entry)" />
+                    <option name="line" value="30" />
+                    <option name="message" value="'*.keystore' is not excluded in .gitignore — if this file is committed, credentials or signing keys could be leaked to the repository." />
+                    <option name="riskLevel" value="HIGH" />
+                  </CachedViolation>
+                  <CachedViolation>
+                    <option name="content" value="(missing entry)" />
+                    <option name="line" value="30" />
+                    <option name="message" value="'*.p12' is not excluded in .gitignore — if this file is committed, credentials or signing keys could be leaked to the repository." />
+                    <option name="riskLevel" value="HIGH" />
+                  </CachedViolation>
+                  <CachedViolation>
+                    <option name="content" value="(missing entry)" />
+                    <option name="line" value="30" />
+                    <option name="message" value="'*.pfx' is not excluded in .gitignore — if this file is committed, credentials or signing keys could be leaked to the repository." />
+                    <option name="riskLevel" value="HIGH" />
+                  </CachedViolation>
+                  <CachedViolation>
+                    <option name="content" value="(missing entry)" />
+                    <option name="line" value="30" />
+                    <option name="message" value="'keystore.properties' is not excluded in .gitignore — if this file is committed, credentials or signing keys could be leaked to the repository." />
+                    <option name="riskLevel" value="HIGH" />
+                  </CachedViolation>
+                  <CachedViolation>
+                    <option name="content" value="(missing entry)" />
+                    <option name="line" value="30" />
+                    <option name="message" value="'local.properties' is not excluded in .gitignore — if this file is committed, credentials or signing keys could be leaked to the repository." />
+                    <option name="riskLevel" value="HIGH" />
+                  </CachedViolation>
+                  <CachedViolation>
+                    <option name="content" value="(missing entry)" />
+                    <option name="line" value="30" />
+                    <option name="message" value="'google-services.json' is not excluded in .gitignore — if this file is committed, credentials or signing keys could be leaked to the repository." />
+                    <option name="riskLevel" value="HIGH" />
+                  </CachedViolation>
+                  <CachedViolation>
+                    <option name="content" value="(missing entry)" />
+                    <option name="line" value="30" />
+                    <option name="message" value="'GoogleService-Info.plist' is not excluded in .gitignore — if this file is committed, credentials or signing keys could be leaked to the repository." />
+                    <option name="riskLevel" value="HIGH" />
+                  </CachedViolation>
+                  <CachedViolation>
+                    <option name="content" value="(missing entry)" />
+                    <option name="line" value="30" />
+                    <option name="message" value="'*.aab' is not excluded in .gitignore — if this file is committed, credentials or signing keys could be leaked to the repository." />
+                    <option name="riskLevel" value="HIGH" />
+                  </CachedViolation>
+                  <CachedViolation>
+                    <option name="content" value="(missing entry)" />
+                    <option name="line" value="30" />
+                    <option name="message" value="'.env' is not excluded in .gitignore — if this file is committed, credentials or signing keys could be leaked to the repository." />
+                    <option name="riskLevel" value="HIGH" />
+                  </CachedViolation>
+                  <CachedViolation>
+                    <option name="content" value="(missing entry)" />
+                    <option name="line" value="30" />
+                    <option name="message" value="'secrets.properties' is not excluded in .gitignore — if this file is committed, credentials or signing keys could be leaked to the repository." />
+                    <option name="riskLevel" value="HIGH" />
+                  </CachedViolation>
+                  <CachedViolation>
+                    <option name="content" value="(missing entry)" />
+                    <option name="line" value="30" />
+                    <option name="message" value="'signing.properties' is not excluded in .gitignore — if this file is committed, credentials or signing keys could be leaked to the repository." />
+                    <option name="riskLevel" value="HIGH" />
+                  </CachedViolation>
+                </list>
+              </option>
+            </CacheEntry>
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/app/.gitignore">
+          <value>
+            <CacheEntry>
+              <option name="hash" value="1780469346163" />
+              <option name="violations">
+                <list>
+                  <CachedViolation>
+                    <option name="content" value="(missing entry)" />
+                    <option name="line" value="1" />
+                    <option name="message" value="'*.jks' is not excluded in .gitignore — if this file is committed, credentials or signing keys could be leaked to the repository." />
+                    <option name="riskLevel" value="HIGH" />
+                  </CachedViolation>
+                  <CachedViolation>
+                    <option name="content" value="(missing entry)" />
+                    <option name="line" value="1" />
+                    <option name="message" value="'*.keystore' is not excluded in .gitignore — if this file is committed, credentials or signing keys could be leaked to the repository." />
+                    <option name="riskLevel" value="HIGH" />
+                  </CachedViolation>
+                  <CachedViolation>
+                    <option name="content" value="(missing entry)" />
+                    <option name="line" value="1" />
+                    <option name="message" value="'*.p12' is not excluded in .gitignore — if this file is committed, credentials or signing keys could be leaked to the repository." />
+                    <option name="riskLevel" value="HIGH" />
+                  </CachedViolation>
+                  <CachedViolation>
+                    <option name="content" value="(missing entry)" />
+                    <option name="line" value="1" />
+                    <option name="message" value="'*.pfx' is not excluded in .gitignore — if this file is committed, credentials or signing keys could be leaked to the repository." />
+                    <option name="riskLevel" value="HIGH" />
+                  </CachedViolation>
+                  <CachedViolation>
+                    <option name="content" value="(missing entry)" />
+                    <option name="line" value="1" />
+                    <option name="message" value="'keystore.properties' is not excluded in .gitignore — if this file is committed, credentials or signing keys could be leaked to the repository." />
+                    <option name="riskLevel" value="HIGH" />
+                  </CachedViolation>
+                  <CachedViolation>
+                    <option name="content" value="(missing entry)" />
+                    <option name="line" value="1" />
+                    <option name="message" value="'local.properties' is not excluded in .gitignore — if this file is committed, credentials or signing keys could be leaked to the repository." />
+                    <option name="riskLevel" value="HIGH" />
+                  </CachedViolation>
+                  <CachedViolation>
+                    <option name="content" value="(missing entry)" />
+                    <option name="line" value="1" />
+                    <option name="message" value="'google-services.json' is not excluded in .gitignore — if this file is committed, credentials or signing keys could be leaked to the repository." />
+                    <option name="riskLevel" value="HIGH" />
+                  </CachedViolation>
+                  <CachedViolation>
+                    <option name="content" value="(missing entry)" />
+                    <option name="line" value="1" />
+                    <option name="message" value="'GoogleService-Info.plist' is not excluded in .gitignore — if this file is committed, credentials or signing keys could be leaked to the repository." />
+                    <option name="riskLevel" value="HIGH" />
+                  </CachedViolation>
+                  <CachedViolation>
+                    <option name="content" value="(missing entry)" />
+                    <option name="line" value="1" />
+                    <option name="message" value="'*.aab' is not excluded in .gitignore — if this file is committed, credentials or signing keys could be leaked to the repository." />
+                    <option name="riskLevel" value="HIGH" />
+                  </CachedViolation>
+                  <CachedViolation>
+                    <option name="content" value="(missing entry)" />
+                    <option name="line" value="1" />
+                    <option name="message" value="'.env' is not excluded in .gitignore — if this file is committed, credentials or signing keys could be leaked to the repository." />
+                    <option name="riskLevel" value="HIGH" />
+                  </CachedViolation>
+                  <CachedViolation>
+                    <option name="content" value="(missing entry)" />
+                    <option name="line" value="1" />
+                    <option name="message" value="'secrets.properties' is not excluded in .gitignore — if this file is committed, credentials or signing keys could be leaked to the repository." />
+                    <option name="riskLevel" value="HIGH" />
+                  </CachedViolation>
+                  <CachedViolation>
+                    <option name="content" value="(missing entry)" />
+                    <option name="line" value="1" />
+                    <option name="message" value="'signing.properties' is not excluded in .gitignore — if this file is committed, credentials or signing keys could be leaked to the repository." />
+                    <option name="riskLevel" value="HIGH" />
+                  </CachedViolation>
+                </list>
+              </option>
+            </CacheEntry>
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/app/build.gradle.kts">
+          <value>
+            <CacheEntry>
+              <option name="hash" value="1780995248149" />
+              <option name="violations">
+                <list>
+                  <CachedViolation>
+                    <option name="checkId" value="dependency_lock" />
+                    <option name="content" value="build.gradle.kts" />
+                    <option name="line" value="1" />
+                    <option name="message" value="No dependency locking found. Without locking, each build can resolve to a different set of transitive dependencies, enabling silent dependency substitution attacks. Add 'dependencyLocking { lockAllConfigurations() }' or run './gradlew dependencies --write-locks'." />
+                    <option name="riskLevel" value="LOW" />
+                  </CachedViolation>
+                </list>
+              </option>
+            </CacheEntry>
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/build.gradle.kts">
+          <value>
+            <CacheEntry>
+              <option name="hash" value="1780469352712" />
+              <option name="violations">
+                <list>
+                  <CachedViolation>
+                    <option name="content" value="build.gradle.kts" />
+                    <option name="line" value="1" />
+                    <option name="message" value="No dependency locking found. Without locking, each build can resolve to a different set of transitive dependencies, enabling silent dependency substitution attacks. Add 'dependencyLocking { lockAllConfigurations() }' or run './gradlew dependencies --write-locks'." />
+                    <option name="riskLevel" value="LOW" />
+                  </CachedViolation>
+                </list>
+              </option>
+            </CacheEntry>
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/gradle.properties">
+          <value>
+            <CacheEntry>
+              <option name="hash" value="1780469344971" />
+            </CacheEntry>
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/gradle/libs.versions.toml">
+          <value>
+            <CacheEntry>
+              <option name="hash" value="1780475322068" />
+            </CacheEntry>
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/gradle/wrapper/gradle-wrapper.jar">
+          <value>
+            <CacheEntry>
+              <option name="hash" value="1780469344215" />
+            </CacheEntry>
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/gradle/wrapper/gradle-wrapper.properties">
+          <value>
+            <CacheEntry>
+              <option name="hash" value="1780469345026" />
+            </CacheEntry>
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/settings.gradle.kts">
+          <value>
+            <CacheEntry>
+              <option name="hash" value="1780469347115" />
+            </CacheEntry>
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+</project>
