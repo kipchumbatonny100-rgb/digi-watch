@@ -138,7 +138,7 @@ fun SettingsScreen(onBackClick: () -> Unit) {
         if (showThemeDialog) {
             AlertDialog(
                 onDismissRequest = { showThemeDialog = false },
-                title = { Text("Choose Theme Color") },
+                title = { Text("Choose Theme Color", color = Color.Black) },
                 text = {
                     Row(horizontalArrangement = Arrangement.SpaceEvenly, modifier = Modifier.fillMaxWidth()) {
                         ColorOption(Color(0xFF1976D2)) { themeColor = it; showThemeDialog = false }
@@ -147,14 +147,11 @@ fun SettingsScreen(onBackClick: () -> Unit) {
                         ColorOption(Color(0xFF7B1FA2)) { themeColor = it; showThemeDialog = false }
                     }
                 },
-                confirmButton = { TextButton(onClick = { 
-                    showThemeDialog = false 
-                    scope.launch {
-                        try {
-                            apiService.updateSettings(mapOf("userId" to userId, "themeColor" to String.format("#%06X", 0xFFFFFF and themeColor.value.toInt())))
-                        } catch (e: Exception) {}
-                    }
-                }) { Text("Done") } }
+                confirmButton = { 
+                    TextButton(onClick = { 
+                        showThemeDialog = false 
+                    }) { Text("Close") } 
+                }
             )
         }
 
