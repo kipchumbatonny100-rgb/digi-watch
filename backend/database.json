@@ -1,0 +1,36 @@
+{
+  "users": [
+    {
+      "id": 1,
+      "name": "Test User",
+      "email": "test@example.com",
+      "password": "password123",
+      "address": "123 Main St",
+      "isSafe": true,
+      "role": "user"
+    },
+    {
+      "id": 2,
+      "name": "Security Officer",
+      "email": "admin@secure.us",
+      "password": "admin123",
+      "role": "admin"
+    },
+    {
+      "id": 3,
+      "name": "Kipchumba Tonny ",
+      "email": "Kipchumbatonny100@gmail.com",
+      "password": "1234",
+      "address": "",
+      "isSafe": true
+    }
+  ],
+  "reports": [
+    {
+      "userId": 1,
+      "address": "Nairobi Central",
+      "isSafe": true,
+      "timestamp": "2025-02-12T12:00:00.000Z"
+    }
+  ]
+}

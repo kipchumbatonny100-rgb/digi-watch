@@ -20,5 +20,9 @@ local.properties
 # Log files
 *.log
 
+# Backend dependencies
+backend/node_modules/
+backend/package-lock.json
+
 # Capture profiling
 *.hprof

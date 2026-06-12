@@ -1,3 +1,25 @@
 <resources>
     <string name="app_name">secure us</string>
+    <string name="label_full_name">Full Name</string>
+    <string name="label_email">Email</string>
+    <string name="label_password">Password</string>
+    <string name="label_confirm_password">Confirm Password</string>
+    <string name="button_register">Register</string>
+    <string name="msg_fill_all_fields">Please fill all fields</string>
+    <string name="msg_passwords_dont_match">Passwords do not match</string>
+    <string name="msg_registration_successful">Registration Successful</string>
+    <string name="text_already_have_account">Already have an account? </string>
+    <string name="text_login">Login</string>
+    <string name="msg_registered_local_api">Registered via Local API</string>
+    <string name="msg_registration_failed">Registration failed: %1$s</string>
+    <string name="msg_api_error">API Error: %1$s</string>
+    <string name="msg_enter_email_password">Please enter email and password</string>
+    <string name="msg_no_internet">No internet connection</string>
+    <string name="msg_logged_in_api">Logged in via Local API</string>
+    <string name="msg_invalid_credentials">Invalid email or password</string>
+    <string name="msg_server_error">Server Error: %1$d</string>
+    <string name="msg_cannot_reach_server">Cannot reach server. Is node server.js running?</string>
+    <string name="button_create_account">Create Account</string>
+    <string name="text_forgot_password">Forgot password?</string>
+    <string name="msg_feature_coming_soon">Feature coming soon</string>
 </resources>
