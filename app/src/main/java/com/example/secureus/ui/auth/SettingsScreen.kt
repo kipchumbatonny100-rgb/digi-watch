@@ -26,6 +26,7 @@ import androidx.compose.ui.text.input.PasswordVisualTransformation
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.example.secureus.data.SafeZoneApiService
+import com.example.secureus.data.SessionManager
 import com.google.firebase.auth.FirebaseAuth
 import kotlinx.coroutines.launch
 
@@ -46,8 +47,15 @@ fun SettingsScreen(onBackClick: () -> Unit) {
     var location by remember { mutableStateOf("") }
     var phone by remember { mutableStateOf("") }
 
-    // Placeholder User ID - in a real app, this would come from a Session Manager/Datastore
-    val userId = "1" 
+    // Use dynamic User ID from session
+    val userId = SessionManager.userId.toString() 
+
+    if (userId == "-1") {
+        LaunchedEffect(Unit) {
+            Toast.makeText(context, "Please login first", Toast.LENGTH_SHORT).show()
+            onBackClick()
+        }
+    }
 
     AppBackground {
         Box(modifier = Modifier.fillMaxSize().padding(16.dp), contentAlignment = Alignment.Center) {
@@ -101,7 +109,7 @@ fun SettingsScreen(onBackClick: () -> Unit) {
                         Spacer(modifier = Modifier.width(16.dp))
                         Column {
                             Text(
-                                text = user?.email?.split("@")?.get(0)?.replaceFirstChar { it.uppercase() } ?: "User",
+                                text = SessionManager.userName ?: "User",
                                 fontSize = 18.sp,
                                 fontWeight = FontWeight.Bold,
                                 color = Color.Black
@@ -160,7 +168,7 @@ fun SettingsScreen(onBackClick: () -> Unit) {
             var tempLocation by remember { mutableStateOf(location) }
             AlertDialog(
                 onDismissRequest = { showLocationDialog = false },
-                title = { Text("Update Location") },
+                title = { Text("Update Location", color = Color.Black) },
                 text = {
                     DigiTextField(
                         value = tempLocation,
@@ -176,9 +184,7 @@ fun SettingsScreen(onBackClick: () -> Unit) {
                             try {
                                 apiService.updateSettings(mapOf("userId" to userId, "address" to location))
                                 Toast.makeText(context, "Location updated", Toast.LENGTH_SHORT).show()
-                            } catch (e: Exception) {
-                                Toast.makeText(context, "Update failed", Toast.LENGTH_SHORT).show()
-                            }
+                            } catch (e: Exception) {}
                         }
                         showLocationDialog = false
                     }) { Text("Save") }
@@ -192,7 +198,7 @@ fun SettingsScreen(onBackClick: () -> Unit) {
             var tempPhone by remember { mutableStateOf(phone) }
             AlertDialog(
                 onDismissRequest = { showPhoneDialog = false },
-                title = { Text("Update Phone Number") },
+                title = { Text("Update Phone Number", color = Color.Black) },
                 text = {
                     DigiTextField(
                         value = tempPhone,
@@ -224,7 +230,7 @@ fun SettingsScreen(onBackClick: () -> Unit) {
             var confirmPwd by remember { mutableStateOf("") }
             AlertDialog(
                 onDismissRequest = { showPasswordDialog = false },
-                title = { Text("Change Password") },
+                title = { Text("Change Password", color = Color.Black) },
                 text = {
                     Column {
                         DigiTextField(value = oldPwd, onValueChange = { oldPwd = it }, label = "Old Password", leadingIcon = Icons.Default.Lock, visualTransformation = PasswordVisualTransformation())

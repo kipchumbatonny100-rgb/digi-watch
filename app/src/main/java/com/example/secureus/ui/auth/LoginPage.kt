@@ -21,6 +21,7 @@ import androidx.compose.ui.res.stringResource
 import android.widget.Toast
 import com.example.secureus.R
 import com.example.secureus.data.SafeZoneApiService
+import com.example.secureus.data.SessionManager
 import com.example.secureus.ui.theme.SafeZoneTheme
 import com.google.firebase.FirebaseApp
 import com.google.firebase.auth.FirebaseAuth
@@ -160,6 +161,14 @@ private suspend fun loginViaApi(
         val response = apiService.login(mapOf("email" to email, "password" to password))
         onFinished()
         if (response.status == "success") {
+            // Save Session
+            SessionManager.token = response.token
+            response.user?.let {
+                SessionManager.userId = it.id
+                SessionManager.userName = it.name
+                SessionManager.userRole = it.role
+            }
+
             Toast.makeText(context, context.getString(R.string.msg_logged_in_api), Toast.LENGTH_SHORT).show()
             onLogin(response.user?.role ?: "user")
         } else {

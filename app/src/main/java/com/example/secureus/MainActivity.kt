@@ -11,6 +11,7 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import androidx.navigation.navArgument
+import com.example.secureus.data.SessionManager
 import com.example.secureus.ui.auth.*
 import com.example.secureus.ui.theme.SafeZoneTheme
 import com.google.android.gms.maps.model.LatLng
@@ -19,6 +20,7 @@ import com.google.firebase.auth.FirebaseAuth
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        SessionManager.init(this)
         enableEdgeToEdge()
         setContent {
             SafeZoneTheme {

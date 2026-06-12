@@ -48,6 +48,13 @@ interface SafeZoneApiService {
 
             val client = OkHttpClient.Builder()
                 .addInterceptor(logger)
+                .addInterceptor { chain ->
+                    val request = chain.request().newBuilder()
+                    SessionManager.token?.let {
+                        request.addHeader("Authorization", "Bearer $it")
+                    }
+                    chain.proceed(request.build())
+                }
                 .connectTimeout(15, TimeUnit.SECONDS)
                 .readTimeout(15, TimeUnit.SECONDS)
                 .writeTimeout(15, TimeUnit.SECONDS)
