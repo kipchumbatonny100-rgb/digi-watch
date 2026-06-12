@@ -27,7 +27,7 @@ import com.google.firebase.auth.FirebaseAuth
 import kotlinx.coroutines.launch
 
 @Composable
-fun LoginPage(onLogin: (String) -> Unit, onRegister: () -> Unit) {
+fun LoginPage(onLogin: (String) -> Unit, onRegister: () -> Unit, onForgotPassword: () -> Unit) {
     var email by remember { mutableStateOf("") }
     var password by remember { mutableStateOf("") }
     var isLoading by remember { mutableStateOf(value = false) }
@@ -139,9 +139,7 @@ fun LoginPage(onLogin: (String) -> Unit, onRegister: () -> Unit) {
                     
                     Spacer(modifier = Modifier.height(24.dp))
                     
-                    TextButton(onClick = { 
-                        Toast.makeText(context, featureComingSoonMsg, Toast.LENGTH_SHORT).show()
-                    }) {
+                    TextButton(onClick = onForgotPassword) {
                         Text(stringResource(R.string.text_forgot_password), color = Color(0xFF1976D2))
                     }
                 }
@@ -188,6 +186,6 @@ private suspend fun loginViaApi(
 @Composable
 fun LoginPagePreview() {
     SecureUsTheme {
-        LoginPage(onLogin = {}, onRegister = {})
+        LoginPage(onLogin = {}, onRegister = {}, onForgotPassword = {})
     }
 }

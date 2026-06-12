@@ -19,7 +19,9 @@ data class NetworkResponse(
 data class UserData(
     val id: Int,
     val name: String,
-    val role: String = "user"
+    val role: String = "user",
+    val phone: String? = null,
+    val themeColor: String? = null
 )
 
 data class UserStatusResponse(

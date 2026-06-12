@@ -26,7 +26,12 @@ import com.google.firebase.auth.FirebaseAuth
 import kotlinx.coroutines.launch
 
 @Composable
-fun HomeScreen(onReportClick: () -> Unit, onPastReportsClick: () -> Unit, onLogoutClick: () -> Unit) {
+fun HomeScreen(
+    onReportClick: () -> Unit, 
+    onPastReportsClick: () -> Unit, 
+    onSettingsClick: () -> Unit,
+    onLogoutClick: () -> Unit
+) {
     val auth = remember { FirebaseAuth.getInstance() }
     val currentUser = auth.currentUser
     val userName = currentUser?.email?.split("@")?.get(0) ?: "User"

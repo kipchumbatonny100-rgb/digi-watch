@@ -17,6 +17,18 @@ interface SecureUsApiService {
     @POST("api/login")
     suspend fun login(@Body request: Map<String, String>): NetworkResponse
 
+    @POST("api/settings/update")
+    suspend fun updateSettings(@Body request: Map<String, String>): NetworkResponse
+
+    @POST("api/settings/change-password")
+    suspend fun changePassword(@Body request: Map<String, String>): NetworkResponse
+
+    @POST("api/auth/forgot-password")
+    suspend fun forgotPassword(@Body request: Map<String, String>): NetworkResponse
+
+    @POST("api/auth/reset-password")
+    suspend fun resetPassword(@Body request: Map<String, String>): NetworkResponse
+
     @GET("api/user/{id}")
     suspend fun getUserStatus(@Path("id") userId: Int): UserStatusResponse
 

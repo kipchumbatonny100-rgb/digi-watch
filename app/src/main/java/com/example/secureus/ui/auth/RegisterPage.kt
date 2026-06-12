@@ -8,6 +8,7 @@ import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Email
 import androidx.compose.material.icons.filled.Lock
 import androidx.compose.material.icons.filled.Person
+import androidx.compose.material.icons.filled.Phone
 import androidx.compose.material3.*
 import androidx.compose.runtime.*
 import androidx.compose.runtime.saveable.rememberSaveable
@@ -38,6 +39,7 @@ fun RegisterPage(
 ) {
     var fullName by rememberSaveable { mutableStateOf("") }
     var email by rememberSaveable { mutableStateOf("") }
+    var phone by rememberSaveable { mutableStateOf("") }
     var password by rememberSaveable { mutableStateOf("") }
     var confirmPassword by rememberSaveable { mutableStateOf("") }
     var isLoading by remember { mutableStateOf(value = false) }
@@ -89,6 +91,13 @@ fun RegisterPage(
                     )
                     Spacer(modifier = Modifier.height(16.dp))
                     DigiTextField(
+                        value = phone, 
+                        onValueChange = { phone = it }, 
+                        label = stringResource(R.string.label_phone),
+                        leadingIcon = Icons.Default.Phone
+                    )
+                    Spacer(modifier = Modifier.height(16.dp))
+                    DigiTextField(
                         value = password, 
                         onValueChange = { password = it }, 
                         label = stringResource(R.string.label_password), 
@@ -134,14 +143,14 @@ fun RegisterPage(
                                             } else {
                                                 // Fallback to Local API
                                                 scope.launch {
-                                                    registerViaApi(apiService, fullName, email, password, context, onRegisterSuccess) { isLoading = false }
+                                                    registerViaApi(apiService, fullName, email, password, phone, context, onRegisterSuccess) { isLoading = false }
                                                 }
                                             }
                                         }
                                 } else {
                                     // Preview mode or Firebase not initialized
                                     scope.launch {
-                                        registerViaApi(apiService, fullName, email, password, context, onRegisterSuccess) { isLoading = false }
+                                        registerViaApi(apiService, fullName, email, password, phone, context, onRegisterSuccess) { isLoading = false }
                                     }
                                 }
                             },
@@ -173,6 +182,7 @@ private suspend fun registerViaApi(
     fullName: String,
     email: String,
     password: String,
+    phone: String,
     context: android.content.Context,
     onRegisterSuccess: () -> Unit,
     onFinished: () -> Unit
@@ -181,7 +191,8 @@ private suspend fun registerViaApi(
         val response = apiService.register(mapOf(
             "name" to fullName,
             "email" to email,
-            "password" to password
+            "password" to password,
+            "phone" to phone
         ))
         onFinished()
         if (response.status == "success") {

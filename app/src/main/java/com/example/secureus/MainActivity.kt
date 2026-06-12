@@ -49,7 +49,15 @@ fun SecureUsApp(navController: NavHostController) {
                         }
                     }
                 },
-                onRegister = { navController.navigate("register") }
+                onRegister = { navController.navigate("register") },
+                onForgotPassword = { navController.navigate("forgot_password") }
+            )
+        }
+
+        // Forgot Password Page
+        composable("forgot_password") {
+            ForgotPasswordScreen(
+                onBackClick = { navController.popBackStack() }
             )
         }
 
@@ -85,11 +93,19 @@ fun SecureUsApp(navController: NavHostController) {
             HomeScreen(
                 onReportClick = { navController.navigate("report") },
                 onPastReportsClick = { navController.navigate("past_reports") },
+                onSettingsClick = { navController.navigate("settings") },
                 onLogoutClick = {
                     navController.navigate("login") {
                         popUpTo("home") { inclusive = true }
                     }
                 }
+            )
+        }
+
+        // Settings Page
+        composable("settings") {
+            SettingsScreen(
+                onBackClick = { navController.popBackStack() }
             )
         }
 

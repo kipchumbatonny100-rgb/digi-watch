@@ -2,6 +2,7 @@
     <string name="app_name">secure us</string>
     <string name="label_full_name">Full Name</string>
     <string name="label_email">Email</string>
+    <string name="label_phone">Phone Number</string>
     <string name="label_password">Password</string>
     <string name="label_confirm_password">Confirm Password</string>
     <string name="button_register">Register</string>

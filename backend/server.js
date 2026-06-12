@@ -3,9 +3,9 @@
  * npm install express cors
  */
 const express = require('express');
-const cors = require('cors');
 const fs = require('fs');
 const path = require('path');
+const cors = require('cors');
 const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
 
@@ -81,7 +81,7 @@ app.use('/api', (req, res, next) => {
 // Register a new user
 app.post('/api/register', async (req, res) => {
     try {
-        const { name, email, password } = req.body;
+        const { name, email, password, phone } = req.body;
         const db = readDB();
 
         if (db.users.find(u => u.email === email)) {
@@ -98,9 +98,13 @@ app.post('/api/register', async (req, res) => {
             name,
             email,
             password: hashedPassword,
+            phone: phone || "",
             address: "",
             isSafe: true,
-            role: "user"
+            role: "user",
+            themeColor: "#1976D2",
+            otp: null,
+            otpExpiry: null
         };
         db.users.push(newUser);
         writeDB(db);
@@ -111,6 +115,77 @@ app.post('/api/register', async (req, res) => {
         console.error('Registration error:', error);
         res.status(500).json({ message: "Server error during registration", status: "error" });
     }
+});
+
+// Update Settings
+app.post('/api/settings/update', (req, res) => {
+    const { userId, themeColor, address, phone } = req.body;
+    const db = readDB();
+    const user = db.users.find(u => u.id == userId);
+
+    if (!user) return res.status(404).json({ message: "User not found", status: "error" });
+
+    if (themeColor) user.themeColor = themeColor;
+    if (address) user.address = address;
+    if (phone) user.phone = phone;
+
+    writeDB(db);
+    res.json({ message: "Settings updated", status: "success", user });
+});
+
+// Change Password
+app.post('/api/settings/change-password', async (req, res) => {
+    const { userId, oldPassword, newPassword } = req.body;
+    const db = readDB();
+    const user = db.users.find(u => u.id == userId);
+
+    if (!user) return res.status(404).json({ message: "User not found", status: "error" });
+
+    const isMatch = await bcrypt.compare(oldPassword, user.password);
+    if (!isMatch) return res.status(400).json({ message: "Incorrect old password", status: "error" });
+
+    const salt = await bcrypt.genSalt(10);
+    user.password = await bcrypt.hash(newPassword, salt);
+
+    writeDB(db);
+    res.json({ message: "Password changed successfully", status: "success" });
+});
+
+// Forgot Password - Send OTP
+app.post('/api/auth/forgot-password', (req, res) => {
+    const { identity, method } = req.body; // identity is email or phone
+    const db = readDB();
+    const user = db.users.find(u => u.email === identity || u.phone === identity);
+
+    if (!user) return res.status(404).json({ message: "User not found", status: "error" });
+
+    const otp = Math.floor(100000 + Math.random() * 900000).toString();
+    user.otp = otp;
+    user.otpExpiry = Date.now() + 600000; // 10 mins
+
+    writeDB(db);
+
+    console.log(`OTP for ${identity} via ${method}: ${otp}`);
+    res.json({ message: `OTP sent via ${method}`, status: "success" });
+});
+
+// Verify OTP and Reset Password
+app.post('/api/auth/reset-password', async (req, res) => {
+    const { identity, otp, newPassword } = req.body;
+    const db = readDB();
+    const user = db.users.find(u => (u.email === identity || u.phone === identity) && u.otp === otp);
+
+    if (!user || user.otpExpiry < Date.now()) {
+        return res.status(400).json({ message: "Invalid or expired OTP", status: "error" });
+    }
+
+    const salt = await bcrypt.genSalt(10);
+    user.password = await bcrypt.hash(newPassword, salt);
+    user.otp = null;
+    user.otpExpiry = null;
+
+    writeDB(db);
+    res.json({ message: "Password reset successful", status: "success" });
 });
 
 // Login
@@ -149,7 +224,9 @@ app.post('/api/login', async (req, res) => {
                 user: {
                     id: user.id,
                     name: user.name,
-                    role: user.role || 'user'
+                    role: user.role || 'user',
+                    themeColor: user.themeColor || "#1976D2",
+                    phone: user.phone || ""
                 }
             });
         } else {
