@@ -19,7 +19,7 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.input.PasswordVisualTransformation
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import com.example.secureus.data.SecureUsApiService
+import com.example.secureus.data.SafeZoneApiService
 import kotlinx.coroutines.launch
 
 @Composable
@@ -34,7 +34,7 @@ fun ForgotPasswordScreen(onBackClick: () -> Unit) {
 
     val context = LocalContext.current
     val scope = rememberCoroutineScope()
-    val apiService = remember { SecureUsApiService.create() }
+    val apiService = remember { SafeZoneApiService.create() }
 
     AppBackground {
         Box(modifier = Modifier.fillMaxSize().padding(16.dp), contentAlignment = Alignment.Center) {

@@ -19,9 +19,9 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import android.widget.Toast
-import com.example.secureus.data.SecureUsApiService
+import com.example.secureus.data.SafeZoneApiService
 import com.example.secureus.data.UserStatusResponse
-import com.example.secureus.ui.theme.SecureUsTheme
+import com.example.secureus.ui.theme.SafeZoneTheme
 import com.google.firebase.auth.FirebaseAuth
 import kotlinx.coroutines.launch
 
@@ -36,7 +36,7 @@ fun HomeScreen(
     val currentUser = auth.currentUser
     val userName = currentUser?.email?.split("@")?.get(0) ?: "User"
     val context = LocalContext.current
-    val apiService = remember { SecureUsApiService.create() }
+    val apiService = remember { SafeZoneApiService.create() }
     val scope = rememberCoroutineScope()
     
     var userStatus by remember { mutableStateOf<UserStatusResponse?>(null) }
@@ -164,7 +164,7 @@ fun NavIconItem(icon: ImageVector, label: String, isSelected: Boolean, onClick: 
 @Preview(showBackground = true)
 @Composable
 fun HomeScreenPreview() {
-    SecureUsTheme {
+    SafeZoneTheme {
         HomeScreen(onReportClick = {}, onPastReportsClick = {}, onLogoutClick = {})
     }
 }

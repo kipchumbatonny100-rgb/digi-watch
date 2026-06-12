@@ -1,7 +1,7 @@
 {
-  "name": "secure-us-backend",
+  "name": "safe-zone-backend",
   "version": "1.0.0",
-  "description": "Backend for SecureUs alert app",
+  "description": "Backend for SafeZone alert app",
   "main": "server.js",
   "scripts": {
     "start": "node server.js"

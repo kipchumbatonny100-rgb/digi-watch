@@ -46,7 +46,7 @@ function writeDB(data) {
 app.get('/', (req, res) => {
     const db = readDB();
     res.send(`
-        <h1>SecureUs Backend is Running!</h1>
+        <h1>SafeZone Backend is Running!</h1>
         <p>Current Server Time: ${new Date().toLocaleString()}</p>
         <p><b>Database Stats:</b></p>
         <ul>
@@ -270,5 +270,5 @@ app.post('/api/report', (req, res) => {
 });
 
 app.listen(port, '0.0.0.0', () => {
-    console.log(`SecureUs Backend running at http://0.0.0.0:${port}`);
+    console.log(`SafeZone Backend running at http://0.0.0.0:${port}`);
 });

@@ -25,7 +25,7 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.input.PasswordVisualTransformation
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import com.example.secureus.data.SecureUsApiService
+import com.example.secureus.data.SafeZoneApiService
 import com.google.firebase.auth.FirebaseAuth
 import kotlinx.coroutines.launch
 
@@ -35,7 +35,7 @@ fun SettingsScreen(onBackClick: () -> Unit) {
     val user = auth.currentUser
     val context = LocalContext.current
     val scope = rememberCoroutineScope()
-    val apiService = remember { SecureUsApiService.create() }
+    val apiService = remember { SafeZoneApiService.create() }
 
     var showThemeDialog by remember { mutableStateOf(false) }
     var showLocationDialog by remember { mutableStateOf(false) }

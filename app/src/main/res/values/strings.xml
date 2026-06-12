@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">secure us</string>
+    <string name="app_name">safe zone</string>
     <string name="label_full_name">Full Name</string>
     <string name="label_email">Email</string>
     <string name="label_phone">Phone Number</string>

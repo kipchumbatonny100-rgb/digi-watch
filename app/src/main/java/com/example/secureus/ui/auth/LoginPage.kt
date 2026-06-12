@@ -20,8 +20,8 @@ import androidx.compose.ui.unit.sp
 import androidx.compose.ui.res.stringResource
 import android.widget.Toast
 import com.example.secureus.R
-import com.example.secureus.data.SecureUsApiService
-import com.example.secureus.ui.theme.SecureUsTheme
+import com.example.secureus.data.SafeZoneApiService
+import com.example.secureus.ui.theme.SafeZoneTheme
 import com.google.firebase.FirebaseApp
 import com.google.firebase.auth.FirebaseAuth
 import kotlinx.coroutines.launch
@@ -37,7 +37,7 @@ fun LoginPage(onLogin: (String) -> Unit, onRegister: () -> Unit, onForgotPasswor
     val auth = remember { 
         if (FirebaseApp.getApps(context).isNotEmpty()) FirebaseAuth.getInstance() else null 
     }
-    val apiService = remember { SecureUsApiService.create() }
+    val apiService = remember { SafeZoneApiService.create() }
     
     val enterEmailPasswordMsg = stringResource(R.string.msg_enter_email_password)
     val noInternetMsg = stringResource(R.string.msg_no_internet)
@@ -149,7 +149,7 @@ fun LoginPage(onLogin: (String) -> Unit, onRegister: () -> Unit, onForgotPasswor
 }
 
 private suspend fun loginViaApi(
-    apiService: SecureUsApiService,
+    apiService: SafeZoneApiService,
     email: String,
     password: String,
     context: android.content.Context,
@@ -185,7 +185,7 @@ private suspend fun loginViaApi(
 @Preview(showBackground = true)
 @Composable
 fun LoginPagePreview() {
-    SecureUsTheme {
+    SafeZoneTheme {
         LoginPage(onLogin = {}, onRegister = {}, onForgotPassword = {})
     }
 }

@@ -19,14 +19,14 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import android.widget.Toast
 import androidx.compose.ui.platform.LocalContext
-import com.example.secureus.data.SecureUsApiService
+import com.example.secureus.data.SafeZoneApiService
 import com.example.secureus.data.UserReportRequest
 import kotlinx.coroutines.launch
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun AdminDashboardScreen(onLogoutClick: () -> Unit) {
-    val apiService = remember { SecureUsApiService.create() }
+    val apiService = remember { SafeZoneApiService.create() }
     var reports by remember { mutableStateOf<List<UserReportRequest>>(emptyList()) }
     var isLoading by remember { mutableStateOf(true) }
     val scope = rememberCoroutineScope()

@@ -22,6 +22,6 @@ dependencyResolutionManagement {
     }
 }
 
-rootProject.name = "secure us"
+rootProject.name = "safe zone"
 include(":app")
  

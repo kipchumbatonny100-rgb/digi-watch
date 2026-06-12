@@ -26,8 +26,8 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.res.stringResource
 import android.widget.Toast
 import com.example.secureus.R
-import com.example.secureus.data.SecureUsApiService
-import com.example.secureus.ui.theme.SecureUsTheme
+import com.example.secureus.data.SafeZoneApiService
+import com.example.secureus.ui.theme.SafeZoneTheme
 import com.google.firebase.FirebaseApp
 import com.google.firebase.auth.FirebaseAuth
 import kotlinx.coroutines.launch
@@ -50,7 +50,7 @@ fun RegisterPage(
     val auth = remember { 
         if (FirebaseApp.getApps(context).isNotEmpty()) FirebaseAuth.getInstance() else null 
     }
-    val apiService = remember { SecureUsApiService.create() }
+    val apiService = remember { SafeZoneApiService.create() }
     
     val fillAllFieldsMsg = stringResource(R.string.msg_fill_all_fields)
     val passwordsDontMatchMsg = stringResource(R.string.msg_passwords_dont_match)
@@ -178,7 +178,7 @@ fun RegisterPage(
 }
 
 private suspend fun registerViaApi(
-    apiService: SecureUsApiService,
+    apiService: SafeZoneApiService,
     fullName: String,
     email: String,
     password: String,
@@ -214,7 +214,7 @@ private suspend fun registerViaApi(
 @Preview(showBackground = true)
 @Composable
 fun RegisterPagePreview() {
-    SecureUsTheme {
+    SafeZoneTheme {
         RegisterPage(
             onRegisterSuccess = {},
             onLoginClick = {}

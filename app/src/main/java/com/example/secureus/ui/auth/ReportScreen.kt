@@ -21,8 +21,8 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import com.example.secureus.ui.theme.SecureUsTheme
-import com.example.secureus.data.SecureUsApiService
+import com.example.secureus.ui.theme.SafeZoneTheme
+import com.example.secureus.data.SafeZoneApiService
 import com.example.secureus.data.UserReportRequest
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
@@ -48,7 +48,7 @@ fun ReportScreen(onBackClick: () -> Unit, onMapClick: () -> Unit, selectedLocati
     val scope = rememberCoroutineScope()
     val db = remember { FirebaseFirestore.getInstance() }
     val auth = remember { FirebaseAuth.getInstance() }
-    val apiService = remember { SecureUsApiService.create() }
+    val apiService = remember { SafeZoneApiService.create() }
 
     AppBackground {
         Box(modifier = Modifier.fillMaxSize().padding(16.dp), contentAlignment = Alignment.Center) {
@@ -262,7 +262,7 @@ fun SmallGlossyButton(
 @Preview(showBackground = true)
 @Composable
 fun ReportScreenPreview() {
-    SecureUsTheme {
+    SafeZoneTheme {
         ReportScreen(onBackClick = {}, onMapClick = {})
     }
 }

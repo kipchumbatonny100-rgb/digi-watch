@@ -12,7 +12,7 @@ import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import androidx.navigation.navArgument
 import com.example.secureus.ui.auth.*
-import com.example.secureus.ui.theme.SecureUsTheme
+import com.example.secureus.ui.theme.SafeZoneTheme
 import com.google.android.gms.maps.model.LatLng
 import com.google.firebase.auth.FirebaseAuth
 
@@ -21,16 +21,16 @@ class MainActivity : ComponentActivity() {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
         setContent {
-            SecureUsTheme {
+            SafeZoneTheme {
                 val navController = rememberNavController()
-                SecureUsApp(navController = navController)
+                SafeZoneApp(navController = navController)
             }
         }
     }
 }
 
 @Composable
-fun SecureUsApp(navController: NavHostController) {
+fun SafeZoneApp(navController: NavHostController) {
     val auth = remember { FirebaseAuth.getInstance() }
     val startDestination = if (auth.currentUser != null) "home" else "login"
 

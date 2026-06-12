@@ -10,7 +10,7 @@ import retrofit2.http.POST
 import retrofit2.http.Path
 import java.util.concurrent.TimeUnit
 
-interface SecureUsApiService {
+interface SafeZoneApiService {
     @POST("api/register")
     suspend fun register(@Body request: Map<String, String>): NetworkResponse
 
@@ -43,7 +43,7 @@ interface SecureUsApiService {
         // If testing on an Android Emulator, use 10.0.2.2 (points to your host computer).
         private const val BASE_URL = "http://10.0.0.179:3000/"
 
-        fun create(): SecureUsApiService {
+        fun create(): SafeZoneApiService {
             val logger = HttpLoggingInterceptor().apply { level = HttpLoggingInterceptor.Level.BODY }
 
             val client = OkHttpClient.Builder()
@@ -58,7 +58,7 @@ interface SecureUsApiService {
                 .client(client)
                 .addConverterFactory(GsonConverterFactory.create())
                 .build()
-                .create(SecureUsApiService::class.java)
+                .create(SafeZoneApiService::class.java)
         }
     }
 }
