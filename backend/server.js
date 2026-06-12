@@ -8,15 +8,28 @@ const path = require('path');
 const cors = require('cors');
 const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
+const helmet = require('helmet');
+const { body, validationResult } = require('express-validator');
+require('dotenv').config();
 
 const app = express();
-const port = 3000;
-const JWT_SECRET = 'secure_us_secret_key_123'; // In production, use an environment variable
+const port = process.env.PORT || 3000;
+const JWT_SECRET = process.env.JWT_SECRET || 'fallback_secret_for_dev_only';
 
 const DB_FILE = path.join(__dirname, 'database.json');
 
+app.use(helmet()); // Sets various security-focused HTTP headers
 app.use(cors());
-app.use(express.json());
+app.use(express.json({ limit: '10kb' })); // Limit body size to prevent DoS
+
+// Middleware to handle validation errors
+const validate = (req, res, next) => {
+    const errors = validationResult(req);
+    if (!errors.isEmpty()) {
+        return res.status(400).json({ status: "error", errors: errors.array() });
+    }
+    next();
+};
 
 // Initialize Database File if it doesn't exist
 if (!fs.existsSync(DB_FILE)) {
@@ -79,7 +92,12 @@ app.use('/api', (req, res, next) => {
 });
 
 // Register a new user
-app.post('/api/register', async (req, res) => {
+app.post('/api/register', [
+    body('email').isEmail().normalizeEmail(),
+    body('password').isLength({ min: 6 }),
+    body('name').trim().notEmpty(),
+    validate
+], async (req, res) => {
     try {
         const { name, email, password, phone } = req.body;
         const db = readDB();
@@ -152,7 +170,11 @@ app.post('/api/settings/change-password', async (req, res) => {
 });
 
 // Forgot Password - Send OTP
-app.post('/api/auth/forgot-password', (req, res) => {
+app.post('/api/auth/forgot-password', [
+    body('identity').notEmpty(),
+    body('method').isIn(['Email', 'SMS']),
+    validate
+], (req, res) => {
     const { identity, method } = req.body; // identity is email or phone
     const db = readDB();
     const user = db.users.find(u => u.email === identity || u.phone === identity);
@@ -170,7 +192,12 @@ app.post('/api/auth/forgot-password', (req, res) => {
 });
 
 // Verify OTP and Reset Password
-app.post('/api/auth/reset-password', async (req, res) => {
+app.post('/api/auth/reset-password', [
+    body('identity').notEmpty(),
+    body('otp').isLength({ min: 6, max: 6 }),
+    body('newPassword').isLength({ min: 6 }),
+    validate
+], async (req, res) => {
     const { identity, otp, newPassword } = req.body;
     const db = readDB();
     const user = db.users.find(u => (u.email === identity || u.phone === identity) && u.otp === otp);
@@ -189,7 +216,11 @@ app.post('/api/auth/reset-password', async (req, res) => {
 });
 
 // Login
-app.post('/api/login', async (req, res) => {
+app.post('/api/login', [
+    body('email').isEmail().normalizeEmail(),
+    body('password').notEmpty(),
+    validate
+], async (req, res) => {
     try {
         const { email, password } = req.body;
         const db = readDB();
